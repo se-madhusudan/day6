@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asynchronous JavaScript, Error Handling, JSON, and localStorage</title>
+    <style>
+        #error {
+            color: red;
+            font-size: small;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Learning JS Asynchronous Programming, Error Handling, JSON and Local Storage </h1>
+    <hr>
+    <h2>Asynchronous Programming</h2>
+    <p id="promise"></p>
+    <p id="async"></p>
+    <p id="iife"></p>
+
+    <hr>
+    <h2>Error Handling</h2>
+    <label for="number">Enter a number: </label>
+    <input type="text" name="number" id="number" placeholder="123">
+    <button id="checkInp">Check</button>
+    <p id="error"></p>
+    <p id="finally"></p>
+
+    <hr>
+    <h2>JSON</h2>
+    <p id="json"></p>
+
+    <script>
+        //function returning a promise, that resolves after 2 seconds and with message
+        const returnPromise = () => {
+            return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('Promise resolved');
+            }, 2000);
+        });
+        }
+
+        returnPromise().then((message) => {
+            document.querySelector('p').innerText = `Result (promise): ${message}`;
+            console.log(`Result (promise): ${message}`);
+        });
+
+        // using the above promise in async-await
+        const asyncAwait = async () => {
+            const message = await returnPromise();
+            document.querySelector('#async').innerText = `Result (async-await): ${message}`;
+            console.log(`Result (async-await): ${message}`);
+        };
+        asyncAwait();
+
+        // same as above but using IIFE -  Immediately Invoked Function Expression
+        (async () => {
+            const message = await returnPromise();
+            document.querySelector('#iife').innerText = `Result (async-await) using IIFE : ${message}`;
+            console.log(`Result (async-await) using IIFE: ${message}`);
+        }) ();
+
+        //Error Handling
+        const inpChecker = (x) => {
+            if (x.trim() === '') {
+                throw 'Input is empty';
+            } else if (isNaN(x)) {
+                throw 'Input is not a number';
+            }
+            
+        }
+
+        document.querySelector('#checkInp').addEventListener('click', () => {
+            let inp = document.getElementById('number').value;
+            try {
+                inpChecker(inp);
+                document.querySelector('#error').innerText = '';
+            }
+            catch (err) {
+                document.getElementById('error').innerText = err;
+            }
+            finally {
+                document.getElementById('finally').innerText = 'Finally got executed';
+            }
+        });
+
+        //JSON - book data
+        
+
+    </script>
+</body>
+</html>

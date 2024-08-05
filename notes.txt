@@ -1,0 +1,25 @@
+//////////////////////////////////////////// Topic \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+1. Asynchronous JavaScript (callbacks, promises, async/await) 
+    -Asynchronous javascript allows the codes to run in parallel
+    -callback is the function passed to another function as an argument
+    -promise is the object that represents the eventual completion or the failure of the asynchronous operation
+    -async/await is a simpler way to achieve the asynchronous behavior of the code.
+
+2. Error handling (try, catch, finally) 
+    -try defines the code to run (to try)
+    -catch defines error handling
+    -finally defines the code to run regardless of the result
+    -throw defines the custom error
+
+3. JSON and localStorage
+    -javascript object notation for storing and transferring data
+
+/////////////////////////////////////////// Task \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+1. Write a function that returns a promise which resolves after 2 seconds with a message "Promise resolved". 
+2. Call the function and use .then to log the resolved message to the console. 
+3. Rewrite the above promise function using async/await. 
+4. Write a function that throws an error if the input is not a number. 
+5. Use try...catch to call the function and handle the error gracefully. 
+6. Create a JavaScript object representing a book with properties: title, author, and year. 
+7. Convert the object to a JSON string and store it in localStorage.
+8. Retrieve the JSON string from localStorage, parse it back to a JavaScript object, and print the object to the console.
