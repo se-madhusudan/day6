@@ -10,6 +10,11 @@
             font-size: small;
             margin: 5px 0;
         }
+
+        pre {
+            color: blue;
+        }
+
     </style>
 </head>
 <body>
@@ -31,6 +36,16 @@
     <hr>
     <h2>JSON</h2>
     <p id="json"></p>
+    <p>Object: 
+    <pre>
+        const books = {
+            title: 'The Power of Your Subconscious Mind',
+            author: 'Joseph Murphy',
+            year: 1963
+        }
+    </pre>
+    </p>
+    <p id="string"></p>
 
     <script>
         //function returning a promise, that resolves after 2 seconds and with message
@@ -72,22 +87,44 @@
             
         }
 
+        let inp = document.getElementById('number');
+        let errorEle = document.querySelector('#error');
+
+        inp.addEventListener('focus', () => {
+            errorEle.innerText = '';
+        });
+
         document.querySelector('#checkInp').addEventListener('click', () => {
-            let inp = document.getElementById('number').value;
+            const inputValue = inp.value;
             try {
-                inpChecker(inp);
-                document.querySelector('#error').innerText = '';
-            }
-            catch (err) {
-                document.getElementById('error').innerText = err;
-            }
-            finally {
+                inpChecker(inputValue);
+                errorEle.innerText = '';
+            } catch (err) {
+                errorEle.innerText = err;
+            } finally {
                 document.getElementById('finally').innerText = 'Finally got executed';
             }
         });
 
         //JSON - book data
-        
+        const books = {
+            title: 'The Power of Your Subconscious Mind',
+            author: 'Joseph Murphy',
+            year: 1963
+        }
+
+        const bookStr = JSON.stringify(books); //converting to the string
+        document.querySelector('#string').innerHTML = `JSON String: <pre>${bookStr}<pre>`;
+
+        //storing in local storage
+        localStorage.setItem('books', bookStr);
+
+        //fetching data from local storage
+        let bookData = localStorage.getItem('books');
+        let bookDataObj = JSON.parse(bookData);
+        console.log('Book Data Object: ',bookDataObj);
+
+
 
     </script>
 </body>

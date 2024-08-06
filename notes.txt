@@ -13,6 +13,7 @@
 
 3. JSON and localStorage
     -javascript object notation for storing and transferring data
+    -localStorage object provided ability to store website data and manipulate them in browser
 
 /////////////////////////////////////////// Task \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 1. Write a function that returns a promise which resolves after 2 seconds with a message "Promise resolved". 

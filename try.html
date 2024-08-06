@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="try"></p>
+    <script>
+        let p = document.querySelector('#try');
+        const timeOut = 3000;
+        const tryFun = () => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    p.innerText = 'Hello';
+                    if(timeOut == 2000) {
+                      resolve('Promise resolved');
+                    } else {
+                      reject('Promise rejected');
+                    }
+                }, timeOut);
+            });
+        }
+
+        tryFun().then((msg) => {
+            p.innerText = `Hello : ${msg}`;
+        }).catch((err) => {
+            p.innerText = `${err} : ${err.message}`;
+        });
+    </script>
+</body>
+</html>
