@@ -47,6 +47,10 @@
     </p>
     <p id="string"></p>
 
+    <hr>
+    <h2>localStorage</h2>
+    <p id="books"></p>
+
     <script>
         //function returning a promise, that resolves after 2 seconds and with message
         const returnPromise = () => {
@@ -83,15 +87,14 @@
                 throw 'Input is empty';
             } else if (isNaN(x)) {
                 throw 'Input is not a number';
-            }
-            
+            }   
         }
 
         let inp = document.getElementById('number');
         let errorEle = document.querySelector('#error');
 
         inp.addEventListener('focus', () => {
-            errorEle.innerText = '';
+            errorEle.innerText = '';          //to show nothing when input on focus
         });
 
         document.querySelector('#checkInp').addEventListener('click', () => {
@@ -123,6 +126,12 @@
         let bookData = localStorage.getItem('books');
         let bookDataObj = JSON.parse(bookData);
         console.log('Book Data Object: ',bookDataObj);
+        let bookDetail = '';
+        for(let book in bookDataObj) {
+            bookDetail += bookDataObj[book] + ', ';
+            console.log(bookDataObj[book]);
+        }
+        document.querySelector('#books').innerHTML = '<strong>Book Details: <br></strong>' + bookDetail.slice(0,-2);
 
 
 
