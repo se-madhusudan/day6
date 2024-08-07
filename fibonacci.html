@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci Series</title>
+    <style>
+        #series, #seriesSum {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fibonacci Series</h1>
+    <label for="inp">Enter number of terms in the series:</label>
+    <input type="number" name="inp" id="inp">
+    <button>Calculate</button>
+    <p id="series"></p>
+    <p id="seriesSum"></p>
+
+    <script>
+        let inpt = document.querySelector('#inp');
+        let btn = document.querySelector('button');
+        let seriesPara = document.querySelector('#series');
+        let seriesSumPara = document.querySelector('#seriesSum');
+        let inptVal;
+
+        btn.addEventListener('click', () => {
+            inptVal = parseInt(inpt.value);
+            fibonacci(inptVal);  // called fun to do calculation
+        });
+
+        const fibonacci = (x) => {
+            let series = '';
+            let t1 = 0;
+            let t2 = 1;
+            let tn;
+            let sum = 0;
+            console.log(`Calculating fibonacci: ${x} terms...`);
+
+            for (let i = 0; i < x; i++) {
+                series += t1 + ', ';
+                tn = t1 + t2;
+                sum += t1;
+                t1 = t2;
+                t2 = tn;
+            }
+
+            seriesPara.innerText = `Series : ${series.slice(0, -2)}`;
+            seriesSumPara.innerText = `Sum : ${sum}`;
+            console.log(`Series : ${series.slice(0, -2)}`);
+            console.log(`Sum : ${sum}`);
+        }
+    </script>
+</body>
+</html>
